@@ -9,9 +9,10 @@
     gap: 1em;
     justify-content: center;
 
-    @media (min-width: 1200px) {
+    @media (min-width: 1024px) {
         & {
             gap: 2em;
         }
     }
+
 }
