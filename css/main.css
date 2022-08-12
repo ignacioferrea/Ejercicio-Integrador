@@ -162,13 +162,14 @@ body {
     gap: 2em;
   }
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 906px) and (max-width: 1023px) {
   .cards-container {
     display: grid;
-    grid-template: 1fr/repeat(1, auto);
+    grid-template: 1fr/repeat(3, auto);
+    gap: 2em;
   }
 }
-@media (min-width: 677px) and (max-width: 767px) {
+@media (min-width: 677px) and (max-width: 905px) {
   .cards-container {
     display: grid;
     grid-template: 1fr/repeat(2, auto);
@@ -199,6 +200,7 @@ body {
 }
 .card__content {
   padding: 1em;
+  text-align: center;
 }
 .card__heading {
   text-align: center;
@@ -225,7 +227,6 @@ body {
   }
   .card__description {
     display: none;
-    text-align: center;
   }
   .card:hover .card__description, .card:focus .card__description {
     display: block;
@@ -243,20 +244,17 @@ body {
     height: 200px;
   }
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 906px) and (max-width: 1023px) {
   .card {
-    width: 90vw;
-    height: 150px;
+    width: auto;
   }
-  .card__article {
-    display: flex;
+  .card__description {
+    font-size: 95%;
   }
-  .card__heading {
-    text-align: start;
-  }
-  .card__image-container {
-    height: 150px;
-    width: 30%;
-    overflow: hidden;
+}
+@media (max-width: 905px) {
+  .card__description {
+    margin-top: 2%;
+    font-size: 90%;
   }
 }/*# sourceMappingURL=main.css.map */

@@ -15,14 +15,15 @@
         }
     }
 
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @media (min-width: 906px) and (max-width: 1023px) {
         & {
             display: grid;
-            grid-template: 1fr / repeat(1, auto);
+            grid-template: 1fr / repeat(3, auto);
+            gap: 2em;
         }
     }
 
-    @media (min-width: 677px) and (max-width: 767px) {
+    @media (min-width: 677px) and (max-width: 905px) {
         & {
             display: grid;
             grid-template: 1fr / repeat(2, auto);
