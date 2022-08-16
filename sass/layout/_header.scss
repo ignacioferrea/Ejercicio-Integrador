@@ -11,9 +11,7 @@
           flex-direction: column-reverse;  
         }
     }
-
 }
-
 
 /***********************************
              NAV BAR
@@ -103,7 +101,7 @@
     border-bottom: 1px solid rgb(218, 218, 218);
     display: flex;
     justify-content: space-between;
-    
+
     &__logo-container {
         align-items: center;
         display: flex;
@@ -190,22 +188,7 @@
         }
     }
 
-    @media (min-width:677px) and (max-width: 768px) {
-        & {
-            border-bottom: solid;
-            border-image-slice: 1;
-            border-image-source: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
-            border-width: 3px;
-        }
-    }
-
     @media (max-width:676px) {
-        & {
-            border-bottom: solid;
-            border-image-slice: 1;
-            border-image-source: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
-            border-width: 3px;
-        }
 
         &__logo-container img {
             height: 55px;
@@ -236,6 +219,8 @@
     }
 
     &:checked ~ .search-bar {
+        border-bottom: 3px solid;
+        border-image-slice: 1;
         border-image-source: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 143, 207), rgb(255, 197, 6));
     }
 
