@@ -28,26 +28,22 @@ body {
   }
 }
 
-#menu {
-  display: none;
-}
-#menu:checked + .nav-bar {
-  display: block;
-}
-#menu:checked ~ .search-bar .menu-toggle__label {
-  background-color: yellow;
-}
-
 /***********************************
              NAV BAR
 ***********************************/
 .nav-bar {
-  background-color: mediumaquamarine;
+  background-color: rgb(15, 15, 15);
+  border-bottom: solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(14deg, #6952f9, #ff83fb 73%, #ffc701);
+  border-top: solid;
+  border-width: 3px;
+  order: 1;
 }
 .nav-bar__nav-list {
   display: flex;
-  list-style-type: none;
   justify-content: center;
+  list-style-type: none;
 }
 @media (max-width: 768px) {
   .nav-bar__nav-list {
@@ -56,18 +52,46 @@ body {
 }
 .nav-bar__nav-item {
   text-align: center;
-  background-color: pink;
+  width: 15%;
+}
+.nav-bar__nav-item:nth-child(1) a:hover {
+  background: linear-gradient(90deg, rgb(169, 103, 250), rgb(194, 111, 250));
+}
+.nav-bar__nav-item:nth-child(2) a:hover {
+  background: linear-gradient(90deg, rgb(194, 111, 250), rgb(221, 120, 251));
+}
+.nav-bar__nav-item:nth-child(3) a:hover {
+  background: linear-gradient(90deg, rgb(221, 120, 251), rgb(248, 129, 251));
+}
+.nav-bar__nav-item:nth-child(4) a:hover {
+  background: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 155, 164));
 }
 .nav-bar__nav-link {
+  color: rgb(255, 255, 255);
   display: block;
-  background-color: purple;
-  color: #fff;
   padding: 1em 2em;
   text-decoration: none;
 }
 @media (max-width: 768px) {
   .nav-bar {
+    border-top: none;
     display: none;
+    order: 0;
+  }
+  .nav-bar__nav-item {
+    width: 100%;
+  }
+  .nav-bar__nav-item:nth-child(1) a:hover {
+    background: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 143, 207), rgb(255, 197, 6));
+  }
+  .nav-bar__nav-item:nth-child(2) a:hover {
+    background: linear-gradient(90deg, rgb(221, 120, 251), rgb(248, 129, 251));
+  }
+  .nav-bar__nav-item:nth-child(3) a:hover {
+    background: linear-gradient(90deg, rgb(194, 111, 250), rgb(221, 120, 251));
+  }
+  .nav-bar__nav-item:nth-child(4) a:hover {
+    background: linear-gradient(90deg, rgb(105, 82, 249), rgb(194, 111, 250));
   }
 }
 
@@ -75,70 +99,159 @@ body {
              SEARCH BAR
 ***********************************/
 .search-bar {
-  background-color: olivedrab;
+  background-color: rgb(243, 245, 240);
+  border-bottom: 1px solid rgb(218, 218, 218);
   display: flex;
   justify-content: space-between;
 }
-.search-bar__logo-container, .search-bar__form-container {
-  padding: 1em;
-}
 .search-bar__logo-container {
-  background-color: yellow;
+  align-items: center;
+  display: flex;
+  flex-basis: 15%;
+  height: 80px;
+  justify-content: center;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  margin-top: 4px;
+}
+.search-bar__logo-container img {
+  height: 60px;
+  width: 120px;
 }
 .search-bar__form-container {
-  background-color: gold;
   display: flex;
   flex-basis: 100%;
   justify-content: center;
 }
 .search-bar__form-label {
-  background-color: greenyellow;
+  display: none;
 }
 .search-bar__form-search {
-  background-color: deeppink;
-  width: 70%;
+  background-color: rgb(221, 221, 221);
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
+  color: black;
+  height: 40px;
+  margin-right: 2%;
+  margin-top: 25px;
+  outline: none;
+  text-align: center;
+  width: 60%;
+}
+.search-bar__form-search:hover {
+  border: 1px solid #816eff;
+  background-color: rgb(190, 190, 190);
+}
+.search-bar__form-search:focus {
+  border: 2px solid #583eff;
+  background-color: rgb(243, 245, 240);
 }
 .search-bar__form-submit {
-  background-color: darkslategray;
+  background-color: #070707;
+  border-radius: 100%;
+  border: none;
   color: white;
+  height: 40px;
+  margin-top: 25px;
+  transition: 0.2s all;
+}
+.search-bar__form-submit:hover {
+  background-color: #816eff;
+  cursor: pointer;
+  scale: 1.1;
+}
+.search-bar__form-submit:focus {
+  scale: 0.9;
 }
 .search-bar__carrito-container {
-  flex: 0 0 3em;
-  background-color: goldenrod;
+  align-items: center;
+  display: flex;
+  flex-basis: 5em;
+  justify-content: center;
+}
+.search-bar__carrito-container:hover {
+  border-bottom: 3px solid #816eff;
+  cursor: pointer;
+}
+.search-bar__carrito-container img {
+  width: 50%;
+}
+@media (min-width: 677px) and (max-width: 768px) {
+  .search-bar {
+    border-bottom: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+    border-width: 3px;
+  }
+}
+@media (max-width: 676px) {
+  .search-bar {
+    border-bottom: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+    border-width: 3px;
+  }
+  .search-bar__logo-container img {
+    height: 55px;
+    width: 100px;
+  }
+  .search-bar__form-search {
+    width: 80%;
+    margin-left: 10%;
+  }
+  .search-bar__form-submit {
+    display: none;
+  }
 }
 
 /***********************************
              MENU TOGGLE
 ***********************************/
+#menu {
+  display: none;
+}
+#menu:checked + .nav-bar {
+  display: block;
+  text-align: center;
+}
+#menu:checked ~ .search-bar {
+  border-image-source: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 143, 207), rgb(255, 197, 6));
+}
+#menu:checked ~ .search-bar .menu-toggle__label {
+  background-color: rgba(218, 218, 218, 0.521);
+}
+
 .menu-toggle {
   display: none;
-  background-color: red;
-  flex: 0 0 3em;
+  flex-basis: 4em;
   position: relative;
-  cursor: pointer;
 }
 .menu-toggle__label {
   display: block;
-  background-color: black;
   height: 100%;
 }
+.menu-toggle__label:hover {
+  border-bottom: 3px solid #6952f9;
+  cursor: pointer;
+}
 .menu-toggle__top-bread, .menu-toggle__meat, .menu-toggle__bottom-bread {
+  border-radius: 5px;
   display: block;
-  background-color: #333;
   height: 0.2em;
-  position: absolute;
-  left: 0.5em;
-  right: 0.5em;
+  margin-left: 20%;
+  margin-right: 20%;
+  position: relative;
+  background-color: #070707;
 }
 .menu-toggle__top-bread {
-  top: 0.8em;
+  top: 40%;
 }
 .menu-toggle__meat {
-  top: 50%;
-  margin-top: -0.1em;
+  top: 45%;
 }
 .menu-toggle__bottom-bread {
-  bottom: 0.8em;
+  top: 50%;
 }
 @media (max-width: 768px) {
   .menu-toggle {

@@ -14,29 +14,24 @@
 
 }
 
-#menu {
-    display: none;
-
-    &:checked + .nav-bar {
-        display: block;
-    }
-
-    &:checked ~ .search-bar .menu-toggle__label {
-        background-color: yellow;
-    }
-}
 
 /***********************************
              NAV BAR
 ***********************************/
 
 .nav-bar {
-    background-color: mediumaquamarine;
-
+    background-color: rgb(15, 15, 15);
+    border-bottom: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(14deg, #6952f9, #ff83fb 73%, #ffc701);
+    border-top: solid;
+    border-width: 3px;
+    order: 1;
+    
     &__nav-list {
         display: flex;
-        list-style-type: none;
         justify-content: center;
+        list-style-type: none;
 
         @media (max-width: 768px) {
             & {
@@ -47,23 +42,56 @@
 
     &__nav-item {
         text-align: center;
-        background-color: pink;
+        width: 15%;
+
+        &:nth-child(1) a:hover {
+            background: linear-gradient(90deg, rgb(169, 103, 250), rgb(194, 111, 250));
+        }
+    
+        &:nth-child(2) a:hover {
+            background: linear-gradient(90deg, rgb(194, 111, 250), rgb(221, 120, 251));
+        }
+        &:nth-child(3) a:hover {
+            background: linear-gradient(90deg, rgb(221, 120, 251), rgb(248, 129, 251));
+        }
+        &:nth-child(4) a:hover {
+            background: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 155, 164));
+        }
     }
 
     &__nav-link {
+        color: rgb(255, 255, 255);
         display: block;
-        background-color: purple;
-        color: #fff;
         padding: 1em 2em;
         text-decoration: none;
     }
 
     @media (max-width: 768px) {
         & {
+            border-top: none;
             display: none;
+            order: 0;
+        }
+
+        &__nav-item {
+            width: 100%;
+            &:nth-child(1) a:hover {
+                background: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 143, 207), rgb(255, 197, 6));
+            }
+
+            &:nth-child(2) a:hover {
+                background: linear-gradient(90deg, rgb(221, 120, 251), rgb(248, 129, 251));
+            }
+            
+            &:nth-child(3) a:hover {
+                background: linear-gradient(90deg, rgb(194, 111, 250), rgb(221, 120, 251));
+            }
+            
+            &:nth-child(4) a:hover {
+                background: linear-gradient(90deg, rgb(105, 82, 249), rgb(194, 111, 250));
+            }
         }
     }
-
 }
 
 /***********************************
@@ -71,84 +99,188 @@
 ***********************************/
 
 .search-bar {
-    background-color: olivedrab;
+    background-color: rgb(243, 245, 240);
+    border-bottom: 1px solid rgb(218, 218, 218);
     display: flex;
     justify-content: space-between;
-
-    &__logo-container,
-    &__form-container {
-        padding: 1em;
-    }
-
+    
     &__logo-container {
-        background-color: yellow;
+        align-items: center;
+        display: flex;
+        flex-basis: 15%;
+        height: 80px;
+        justify-content: center;
+        margin-bottom: 4px;
+        margin-left: 5px ;
+        margin-top: 4px;
+        
+        & img {
+            height: 60px;
+            width: 120px;
+        }
     }
 
     &__form-container {
-        background-color: gold;
         display: flex;
         flex-basis: 100%;
         justify-content: center;
     }
 
     &__form-label {
-        background-color: greenyellow;
+        display: none;
     }
 
     &__form-search {
-        background-color: deeppink;
-        width: 70%;
+        background-color: rgb(221, 221, 221);
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 1px 2px rgba(0,0,0, 0.2), 0 0 2px rgba(0,0,0, .2);
+        color: black;
+        height: 40px;
+        margin-right: 2%;
+        margin-top: 25px;
+        outline: none;
+        text-align: center;
+        width: 60%;
+
+        &:hover {
+            border: 1px solid #816eff; 
+            background-color: rgb(190, 190, 190);
+        }
+
+        &:focus {
+            border: 2px solid #583eff;
+            background-color: rgb(243, 245, 240);
+        }
     }
 
     &__form-submit {
-        background-color: darkslategray;
+        background-color: #070707;
+        border-radius: 100%;
+        border: none;
         color: white;
+        height: 40px;
+        margin-top: 25px;
+        transition: .2s all;
+        
+        &:hover {
+            background-color: #816eff;
+            cursor: pointer;
+            scale: 1.1;
+        }
+
+        &:focus {
+            scale: 0.9;
+        }
     }
 
     &__carrito-container {
-        flex: 0 0 3em;
-        background-color: goldenrod;
+        align-items: center;
+        display: flex;
+        flex-basis: 5em;
+        justify-content: center;
+
+        &:hover {
+            border-bottom: 3px solid #816eff; 
+            cursor: pointer;
+        }
+
+        & img {
+            width: 50%;
+        }
+    }
+
+    @media (min-width:677px) and (max-width: 768px) {
+        & {
+            border-bottom: solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+            border-width: 3px;
+        }
+    }
+
+    @media (max-width:676px) {
+        & {
+            border-bottom: solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+            border-width: 3px;
+        }
+
+        &__logo-container img {
+            height: 55px;
+            width: 100px;
+        }
+
+        &__form-search {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        &__form-submit {
+            display: none;
+        }
     }
 }
 
 /***********************************
              MENU TOGGLE
 ***********************************/
+
+#menu {
+    display: none;
+
+    &:checked + .nav-bar {
+        display: block;
+        text-align: center;
+    }
+
+    &:checked ~ .search-bar {
+        border-image-source: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 143, 207), rgb(255, 197, 6));
+    }
+
+    &:checked ~ .search-bar .menu-toggle__label {
+        background-color: rgba(218, 218, 218, 0.521);
+    }
+}
+
 .menu-toggle {
     display: none;
-    background-color: red;
-    flex: 0 0 3em;
+    flex-basis: 4em;
     position: relative;
-    cursor: pointer;
 
     &__label {
         display: block;
-        background-color: black;
         height: 100%;
+
+        &:hover {
+            border-bottom: 3px solid #6952f9;
+            cursor: pointer;
+        }
     }
 
     &__top-bread,
     &__meat,
     &__bottom-bread {
+        border-radius: 5px;
         display: block;
-        background-color: #333;
         height: .2em;
-        position: absolute;
-        left: .5em;
-        right: .5em;
+        margin-left: 20% ;
+        margin-right: 20% ;
+        position: relative;
+        background-color: #070707;
     }
 
     &__top-bread {
-        top: .8em;
+        top: 40%;
     }
 
     &__meat {
-        top: 50%;
-        margin-top: -.1em;
+        top: 45%;
     }
 
     &__bottom-bread {
-        bottom: .8em;
+        top: 50%;
     }
 
     @media (max-width: 768px) {
