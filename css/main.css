@@ -32,7 +32,7 @@ body {
              NAV BAR
 ***********************************/
 .nav-bar {
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(19, 19, 19);
   border-bottom: solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(14deg, #6952f9, #ff83fb 73%, #ffc701);
@@ -99,8 +99,8 @@ body {
              SEARCH BAR
 ***********************************/
 .search-bar {
-  background-color: rgb(243, 245, 240);
-  border-bottom: 1px solid rgb(218, 218, 218);
+  background-color: rgb(7, 7, 7);
+  border-bottom: 1px solid rgb(119, 119, 119);
   display: flex;
   justify-content: space-between;
 }
@@ -127,7 +127,7 @@ body {
   display: none;
 }
 .search-bar__form-search {
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(243, 245, 240);
   border-radius: 20px;
   border: none;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
@@ -141,14 +141,14 @@ body {
 }
 .search-bar__form-search:hover {
   border: 1px solid #816eff;
-  background-color: rgb(190, 190, 190);
+  background-color: rgb(226, 226, 226);
 }
 .search-bar__form-search:focus {
   border: 2px solid #583eff;
   background-color: rgb(243, 245, 240);
 }
 .search-bar__form-submit {
-  background-color: #070707;
+  background-color: #583eff;
   border-radius: 100%;
   border: none;
   color: white;
@@ -157,12 +157,11 @@ body {
   transition: 0.2s all;
 }
 .search-bar__form-submit:hover {
-  background-color: #816eff;
+  background-color: #745fff;
   cursor: pointer;
-  scale: 1.1;
 }
 .search-bar__form-submit:focus {
-  scale: 0.9;
+  transform: scale(0.9);
 }
 .search-bar__carrito-container {
   align-items: center;
@@ -207,7 +206,7 @@ body {
   border-image-source: linear-gradient(90deg, rgb(248, 129, 251), rgb(255, 143, 207), rgb(255, 197, 6));
 }
 #menu:checked ~ .search-bar .menu-toggle__label {
-  background-color: rgba(218, 218, 218, 0.521);
+  background-color: rgba(34, 34, 34, 0.781);
 }
 
 .menu-toggle {
@@ -224,13 +223,13 @@ body {
   cursor: pointer;
 }
 .menu-toggle__top-bread, .menu-toggle__meat, .menu-toggle__bottom-bread {
+  background-color: #f3f3f3;
   border-radius: 5px;
   display: block;
   height: 0.2em;
   margin-left: 20%;
   margin-right: 20%;
   position: relative;
-  background-color: #070707;
 }
 .menu-toggle__top-bread {
   top: 40%;

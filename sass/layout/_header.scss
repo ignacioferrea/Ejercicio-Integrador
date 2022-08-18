@@ -18,7 +18,7 @@
 ***********************************/
 
 .nav-bar {
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(19, 19, 19);
     border-bottom: solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(14deg, #6952f9, #ff83fb 73%, #ffc701);
@@ -97,8 +97,8 @@
 ***********************************/
 
 .search-bar {
-    background-color: rgb(243, 245, 240);
-    border-bottom: 1px solid rgb(218, 218, 218);
+    background-color: rgb(7, 7, 7);
+    border-bottom: 1px solid rgb(119, 119, 119);
     display: flex;
     justify-content: space-between;
 
@@ -129,7 +129,7 @@
     }
 
     &__form-search {
-        background-color: rgb(221, 221, 221);
+        background-color: rgb(243, 245, 240);
         border-radius: 20px;
         border: none;
         box-shadow: 0 1px 2px rgba(0,0,0, 0.2), 0 0 2px rgba(0,0,0, .2);
@@ -143,7 +143,7 @@
 
         &:hover {
             border: 1px solid #816eff; 
-            background-color: rgb(190, 190, 190);
+            background-color: rgb(226, 226, 226);
         }
 
         &:focus {
@@ -153,7 +153,7 @@
     }
 
     &__form-submit {
-        background-color: #070707;
+        background-color: #583eff;
         border-radius: 100%;
         border: none;
         color: white;
@@ -162,13 +162,14 @@
         transition: .2s all;
         
         &:hover {
-            background-color: #816eff;
+            background-color: #745fff;
             cursor: pointer;
-            scale: 1.1;
         }
 
         &:focus {
-            scale: 0.9;
+            -moz-transform: scale(0.9);
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
         }
     }
 
@@ -225,7 +226,7 @@
     }
 
     &:checked ~ .search-bar .menu-toggle__label {
-        background-color: rgba(218, 218, 218, 0.521);
+        background-color: rgba(34, 34, 34, 0.781);
     }
 }
 
@@ -247,13 +248,13 @@
     &__top-bread,
     &__meat,
     &__bottom-bread {
+        background-color: #f3f3f3;
         border-radius: 5px;
         display: block;
         height: .2em;
         margin-left: 20% ;
         margin-right: 20% ;
         position: relative;
-        background-color: #070707;
     }
 
     &__top-bread {

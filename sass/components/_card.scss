@@ -36,7 +36,11 @@
     }
 
     &:hover &__image, &:focus &__image {
+        -moz-transform-origin: center;
+        -webkit-transform-origin: center;
         transform-origin: center;
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
         transform: scale(1.1);
     }
     
