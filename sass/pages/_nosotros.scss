@@ -1,0 +1,314 @@
+.section-aboutUs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2% auto;
+  width: 90vw;
+  height: 100%;
+
+  &__quienes-somos {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    width: 864px;
+    height: 65vh;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.685), 0 0 2px rgba(0, 0, 0, 0.685);
+    border: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(14deg, #6952f9, #ff83fb 73%, #ffc701);
+    border-top: solid;
+    border-width: 2px;
+
+    &__qs-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & h2 {
+        margin: 1% 0;
+      }
+
+      & p {
+        text-align: justify;
+        width: 70%;
+        font-size: 15px;
+      }
+
+      & span {
+        background: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+        align-self: center;
+        margin: 2% 0;
+        height: 4px;
+        width: 30%;
+      }
+    }
+
+    & img {
+      width: 40%;
+    }
+  }
+
+  &__nuestra-historia {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    width: 864px;
+    height: 65vh;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.685), 0 0 2px rgba(0, 0, 0, 0.685);
+    border: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(14deg, #6952f9, #ff83fb 73%, #ffc701);
+    border-top: solid;
+    border-width: 2px;
+    margin: 2% 0;
+
+    &__nh-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & h2 {
+        margin: 1% 0;
+      }
+
+      & p {
+        text-align: justify;
+        width: 70%;
+        font-size: 15px;
+      }
+
+      & span {
+        background: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+        align-self: center;
+        margin: 2% 0;
+        height: 4px;
+        width: 30%;
+      }
+    }
+
+    & img {
+      width: 40%;
+    }
+  }
+
+  &__nuestro-equipo {
+    display: flex;
+    flex-direction: column;
+    width: 864px;
+    height: 500px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.685), 0 0 2px rgba(0, 0, 0, 0.685);
+    border: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(14deg, #6952f9, #ff83fb 73%, #ffc701);
+    border-top: solid;
+    border-width: 2px;
+
+    & h2 {
+      margin-top: 1%;
+      text-align: center;
+    }
+
+    & span {
+      background: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+      align-self: center;
+      height: 4px;
+      margin: 2%;
+      width: 30%;
+    }
+
+    &__equipo {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      height: 90%;
+
+      &__integrante {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          & h3 {
+            margin: 3% 0;
+          }
+
+          & p {
+            text-align: center;
+            width: 80%;
+          }
+        }
+
+        & img {
+          width: 40%;
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    &__quienes-somos {
+      align-self: center;
+      width: 95%;
+      height: 60vh;
+
+      & h2 {
+        font-size: 22px;
+      }
+
+      & p {
+        font-size: 12px;
+        width: 65%;
+      }
+    }
+
+    &__nuestra-historia {
+      align-self: center;
+      width: 95%;
+      height: 60vh;
+
+      & h2 {
+        font-size: 22px;
+      }
+
+      & p {
+        font-size: 12px;
+        width: 65%;
+      }
+    }
+
+    &__nuestro-equipo {
+      width: 95%;
+      height: 60vh;
+
+      & h2 {
+        font-size: 22px;
+      }
+
+      & h3 {
+        font-size: 18px;
+      }
+
+      & p {
+        font-size: 13px;
+        width: 65%;
+      }
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    &__quienes-somos {
+      align-self: center;
+      width: 95%;
+      height: 35vh;
+
+      & h2 {
+        font-size: 16px;
+      }
+
+      & p {
+        font-size: 8px;
+        width: 80%;
+      }
+    }
+
+    &__nuestra-historia {
+      align-self: center;
+      width: 95%;
+      height: 35vh;
+
+      & h2 {
+        font-size: 16px;
+      }
+
+      & p {
+        font-size: 8px;
+        width: 80%;
+      }
+    }
+
+    &__nuestro-equipo {
+      width: 95%;
+      height: 50vh;
+
+      & h2 {
+        font-size: 18px;
+      }
+
+      & h3 {
+        font-size: 14px;
+      }
+
+      & p {
+        font-size: 10px;
+        width: 65%;
+      }
+    }
+  }
+
+  @media (max-width: 479px) {
+    &__quienes-somos {
+      align-self: center;
+      width: 98%;
+      height: 35vh;
+
+      & h2 {
+        font-size: 14px;
+      }
+
+      & p {
+        word-break: break-all;
+        font-size: 7px;
+        width: 85%;
+      }
+    }
+
+    &__nuestra-historia {
+      align-self: center;
+      width: 98%;
+      height: 35vh;
+
+      & h2 {
+        font-size: 14px;
+      }
+
+      & p {
+        word-break: break-all;
+        font-size: 7px;
+        width: 85%;
+      }
+    }
+
+    &__nuestro-equipo {
+      width: 98%;
+      height: 50vh;
+
+      & h2 {
+        font-size: 16px;
+      }
+
+      & h3 {
+        font-size: 12px;
+      }
+
+      & p {
+        font-size: 8px;
+        width: 65%;
+      }
+    }
+  }
+}
