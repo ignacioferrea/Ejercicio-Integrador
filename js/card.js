@@ -112,9 +112,13 @@ const cards = [
     card9
 ]
 
+/* console.warn('-----')
+console.log(cards[0].heading)
+console.log(cards[0].image) */
+
 console.log(cards)
 
-card1.appendTo(elemCardsContainer)
+/* card1.appendTo(elemCardsContainer)
 card2.appendTo(elemCardsContainer)
 card3.appendTo(elemCardsContainer)
 card4.appendTo(elemCardsContainer)
@@ -122,4 +126,18 @@ card5.appendTo(elemCardsContainer)
 card6.appendTo(elemCardsContainer)
 card7.appendTo(elemCardsContainer)
 card8.appendTo(elemCardsContainer)
-card9.appendTo(elemCardsContainer)
+card9.appendTo(elemCardsContainer) */
+
+/* cards[0].appendTo(elemCardsContainer)
+cards[1].appendTo(elemCardsContainer)
+cards[2].appendTo(elemCardsContainer)
+cards[3].appendTo(elemCardsContainer)
+cards[4].appendTo(elemCardsContainer)
+cards[5].appendTo(elemCardsContainer)
+cards[6].appendTo(elemCardsContainer)
+cards[7].appendTo(elemCardsContainer)
+cards[8].appendTo(elemCardsContainer) */
+
+for (const unaCard of cards) {
+    unaCard.appendTo(elemCardsContainer)
+}
