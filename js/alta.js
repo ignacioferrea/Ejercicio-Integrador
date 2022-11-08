@@ -84,11 +84,17 @@ form.addEventListener('submit', e => {
 
     button.disabled = true
     console.log(productos)
+    
+    renderProdsObjetos()
 })
 
 // Dibuja los productos 
 const renderProdsObjetos = () => {
-
+    let html = ''
+    for (let i = 0; i < productos.length; i++ ){
+        html += `<p>${JSON.stringify(productos[i])}</p>`
+    }
+    document.getElementById('listado-productos').innerHTML = html
 }
 
 // Me permite dibujar cada una de las nuevas filas de la tabla
