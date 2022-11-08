@@ -19,13 +19,13 @@ const setCustomValidityJS = (mensaje, index) => {
 // Para comprobar la validez de los campos
 const algunCampoValido = () => {
     let valido = 
-        campoValidos[0] &&
-        campoValidos[1] &&
-        campoValidos[2] &&
-        campoValidos[3] &&
-        campoValidos[4] &&
-        campoValidos[5] &&
-        campoValidos[6] 
+        camposValidos[0] &&
+        camposValidos[1] &&
+        camposValidos[2] &&
+        camposValidos[3] &&
+        camposValidos[4] &&
+        camposValidos[5] &&
+        camposValidos[6] 
     return !valido
 }
 
@@ -59,8 +59,31 @@ const regExpValidar = [
 inputs.forEach((input, index) => {
     input.addEventListener('input', () => {
         validar(input.value, regExpValidar[index], index)
-
     })
+})
+
+form.addEventListener('submit', e => {
+    e.preventDefault()
+
+    const producto = {
+        nombre: inputs[0].value,
+        precio: inputs[1].value,
+        stock: inputs[2].value,
+        marca: inputs[3].value,
+        categoria: inputs[4].value,
+        detalles: inputs[5].value,
+        foto: inputs[6].value,
+        envio: inputs[7].checked
+    }
+
+    // borrar inputs
+    inputs.forEach(input => input.value = '');
+
+    // console.log(producto)
+    productos.push(producto) 
+
+    button.disabled = true
+    console.log(productos)
 })
 
 // Dibuja los productos 
