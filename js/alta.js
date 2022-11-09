@@ -85,7 +85,8 @@ form.addEventListener('submit', e => {
     button.disabled = true
     console.log(productos)
     
-    renderProdsObjetos()
+    // renderProdsObjetos()
+    renderProdTemplateString()
 })
 
 // Dibuja los productos 
@@ -99,5 +100,42 @@ const renderProdsObjetos = () => {
 
 // Me permite dibujar cada una de las nuevas filas de la tabla
 const renderProdTemplateString = () => {
+    let html = ''
 
+    html += '<table>'
+    console.log(html)
+
+    html += 
+    `
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+            <th>Detalles</th>
+            <th>Foto</th>
+            <th>Envío</th>
+        </tr>  
+    `
+    for (let i = 0; i < productos.length; i++) {
+        let producto = productos[i]
+        html += 
+        `
+            <tr>
+                <th>${producto.nombre}</th>
+                <th>${producto.precio}</th>
+                <th>${producto.stock}</th>
+                <th>${producto.marca}</th>
+                <th>${producto.categoria}</th>
+                <th>${producto.detalles}</th>
+                <th>${producto.foto}</th>
+                <th>${producto.envio}</th>
+            </tr>
+        `
+    }
+
+    html += '</table>'
+
+    document.getElementById('listado-productos').innerHTML = html
 }
