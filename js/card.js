@@ -9,6 +9,24 @@ function Card(heading, description, image) {
         let card = document.createElement('a')
         card.classList.add('card')
         card.href = 'https://sony.com'
+
+        let that = this
+        console.log(that)
+        
+        card.addEventListener('click', function(e) {
+            e.preventDefault()
+            console.log(this)
+            
+            let nuevoItemCarrito = document.createElement('div')
+            nuevoItemCarrito.classList.add('carrito_item')
+            nuevoItemCarrito.innerHTML = that.heading
+            console.log(nuevoItemCarrito)
+
+            elemSectionCarrito.append(nuevoItemCarrito)
+        })
+
+
+
         
         card.innerHTML = 
         `
