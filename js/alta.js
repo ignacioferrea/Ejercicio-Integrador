@@ -1,7 +1,7 @@
 const productos = [
-    {nombre: 'Reloj', precio: '5000', stock: '15', marca: 'Rolex', categoria: 'Accesorios', envio: true, foto: 'reloj.jgp', detalles: 'Malla metalica'},
-    {nombre: 'Gorra', precio: '60', stock: '30', marca: 'Nike', categoria: 'Accesorios', envio: false, foto: 'gorra.jgp', detalles: 'Negra'},
-    {nombre: 'Anteojos', precio: '300', stock: '20', marca: 'Rayband', categoria: 'Accesorios', envio: true, foto: 'anteojos.jgp', detalles: 'Aviador'},
+    {nombre: 'Reloj', precio: '5000', stock: '15', marca: 'Rolex', categoria: 'Accesorios', envio: true, foto: 'https://cdn0.iconfinder.com/data/icons/devices-42/1600/Watch_2-64.png', detalles: 'Digital'},
+    {nombre: 'Gorra', precio: '60', stock: '30', marca: 'Nike', categoria: 'Accesorios', envio: false, foto: 'https://cdn3.iconfinder.com/data/icons/xi4dox/png/nike.png', detalles: 'Negra'},
+    {nombre: 'Anteojos', precio: '300', stock: '20', marca: 'Rayband', categoria: 'Accesorios', envio: true, foto: 'https://cdn0.iconfinder.com/data/icons/summer-26/512/Sunglass-64.png', detalles: 'Aviador'},
 ]
 const camposValidos = [false,false,false,false,false,false,false,false]
 
@@ -113,19 +113,33 @@ const renderProdTemplateString = () => {
 
     html += 
     `
-          
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+            <th>Detalles</th>
+            <th>Foto</th>
+            <th>Envío</th>
+        </tr>  
     `
     for (let i = 0; i < productos.length; i++) {
         let producto = productos[i]
         html += 
         `
-            
+            <tr>
+                <th>${producto.nombre}</th>
+                <th>${producto.precio}</th>
+                <th>${producto.stock}</th>
+                <th>${producto.marca}</th>
+                <th>${producto.categoria}</th>
+                <th>${producto.detalles}</th>
+                <th>${producto.foto}</th>
+                <th>${producto.envio}</th>
+            </tr>
         `
     }
-
-    html += '</table>'
-
-    document.getElementById('listado-productos').innerHTML = html
 }
 
 const renderProds = () => {
