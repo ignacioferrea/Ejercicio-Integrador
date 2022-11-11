@@ -12,17 +12,17 @@
     </tr>
     {{#each productos}}
     <tr>
-        <th>{{nombre}}</th>
-        <th>{{precio}}</th>
-        <th>{{stock}}</th>
-        <th>{{marca}}</th>
-        <th>{{categoria}}</th>
-        <th>{{detalles}}</th>
-        <th>{{foto}}</th>
+        <td>{{nombre}}</td>
+        <td>{{precio}}</td>
+        <td>{{stock}}</td>
+        <td>{{marca}}</td>
+        <td>{{categoria}}</td>
+        <td>{{detalles}}</td>
+        <td>{{foto}}</td>
         {{#if envio}}
-            <th>Si</th>
+            <td>Si</td>
         {{else}}
-            <th>No</th>
+            <td>No</td>
         {{/if}}
     </tr>
     {{/each}}

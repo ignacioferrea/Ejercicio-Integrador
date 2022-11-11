@@ -1,4 +1,8 @@
-const productos = []
+const productos = [
+    {nombre: 'Reloj', precio: '5000', stock: '15', marca: 'Rolex', categoria: 'Accesorios', envio: true, foto: 'reloj.jgp', detalles: 'Malla metalica'},
+    {nombre: 'Gorra', precio: '60', stock: '30', marca: 'Nike', categoria: 'Accesorios', envio: false, foto: 'gorra.jgp', detalles: 'Negra'},
+    {nombre: 'Anteojos', precio: '300', stock: '20', marca: 'Rayband', categoria: 'Accesorios', envio: true, foto: 'anteojos.jgp', detalles: 'Aviador'},
+]
 const camposValidos = [false,false,false,false,false,false,false,false]
 
 const inputs = document.querySelectorAll('input')
