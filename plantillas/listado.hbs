@@ -1,0 +1,30 @@
+{{#if productos.length}}
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Marca</th>
+        <th>Categoría</th>
+        <th>Detalles</th>
+        <th>Foto</th>
+        <th>Envío</th>
+    </tr>
+    {{#each productos}}
+    <tr>
+        <th>{{nombre}}</th>
+        <th>{{precio}}</th>
+        <th>{{stock}}</th>
+        <th>{{marca}}</th>
+        <th>{{categoria}}</th>
+        <th>{{detalles}}</th>
+        <th>{{foto}}</th>
+        {{#if envio}}
+            <th>Si</th>
+        {{else}}
+            <th>No</th>
+        {{/if}}
+    </tr>
+    {{/each}}
+</table>
+{{/if}}

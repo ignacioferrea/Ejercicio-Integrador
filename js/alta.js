@@ -86,7 +86,9 @@ form.addEventListener('submit', e => {
     console.log(productos)
     
     // renderProdsObjetos()
-    renderProdTemplateString()
+    // renderProdTemplateString()
+    renderProds()
+
 })
 
 // Dibuja los productos 
@@ -107,31 +109,13 @@ const renderProdTemplateString = () => {
 
     html += 
     `
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Marca</th>
-            <th>Categoría</th>
-            <th>Detalles</th>
-            <th>Foto</th>
-            <th>Envío</th>
-        </tr>  
+          
     `
     for (let i = 0; i < productos.length; i++) {
         let producto = productos[i]
         html += 
         `
-            <tr>
-                <th>${producto.nombre}</th>
-                <th>${producto.precio}</th>
-                <th>${producto.stock}</th>
-                <th>${producto.marca}</th>
-                <th>${producto.categoria}</th>
-                <th>${producto.detalles}</th>
-                <th>${producto.foto}</th>
-                <th>${producto.envio}</th>
-            </tr>
+            
         `
     }
 
@@ -139,3 +123,27 @@ const renderProdTemplateString = () => {
 
     document.getElementById('listado-productos').innerHTML = html
 }
+
+const renderProds = () => {
+
+    const xhr = new XMLHttpRequest()
+    xhr.open('get', 'plantillas/listado.hbs')
+    xhr.addEventListener('load', () => {
+        if(xhr.status === 200) {
+            let plantillaHbs = xhr.response
+            console.log(plantillaHbs)
+
+            let template = Handlebars.compile(plantillaHbs)
+            console.log(template)
+
+            let html = template({productos: productos})
+            
+            // console.log(html) // Le agregó a la plantilla los datos de productos
+
+            document.getElementById('listado-productos').innerHTML = html
+        }
+    })
+
+    xhr.send()
+}
+renderProds()
