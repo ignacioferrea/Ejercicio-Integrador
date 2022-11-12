@@ -170,5 +170,5 @@ function initAlta () {
     renderProds()    
 }
 
-initAlta()
+// initAlta()
 

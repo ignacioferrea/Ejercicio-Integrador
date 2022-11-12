@@ -51,6 +51,40 @@ function start() {
             }
         })
     }
+
+    const cargarPlantillas = () => {
+        /* --------------------------------------------------------- */
+        /* Carga inicial de la vista determinada por la url visitada */
+        /* --------------------------------------------------------- */
+        let id = location.hash.slice(1) || 'inicio' // EJ: #inicio => slice(1) => inicio || Si no hay nada que cargue inicio por default
+        cargarPlantilla(id)
+
+        /* ------------------------------------------------------------- */
+        /* Carga de cada uno de los contenidos según la navegación local */
+        /* ------------------------------------------------------------- */
+        const links = document.querySelectorAll('header nav a')
+        console.log(links)
+
+        links.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault()
+
+                let id = link.id
+                console.log(id)
+                location.hash = id
+            })
+        })
+
+        window.addEventListener('hashchange', () => {
+            console.log('Cambió la url')
+
+            let id = location.hash.slice(1) || 'inicio'
+            cargarPlantilla(id)
+        })
+
+    }
+
+    cargarPlantillas()
 }
 
 start()
