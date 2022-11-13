@@ -19,6 +19,14 @@ function start() {
         return 'vistas/' + id + '.html' // Concatena para armar la ruta del archivo, por ejemplo: 'vistas/alta.html 
     }
 
+    function marcarLink(id) {
+        const links = document.querySelectorAll('header nav a')
+        links.forEach( link => {
+            if(link.id === id) link.classList.add('active')
+            else link.classList.remove('active')
+        })
+    }
+
     function initJS(id) {
         if (id === 'alta') {
             initAlta()
@@ -57,6 +65,7 @@ function start() {
         /* Carga inicial de la vista determinada por la url visitada */
         /* --------------------------------------------------------- */
         let id = location.hash.slice(1) || 'inicio' // EJ: #inicio => slice(1) => inicio || Si no hay nada que cargue inicio por default
+        marcarLink(id)
         cargarPlantilla(id)
 
         /* ------------------------------------------------------------- */
@@ -79,6 +88,7 @@ function start() {
             console.log('Cambió la url')
 
             let id = location.hash.slice(1) || 'inicio'
+            marcarLink(id)
             cargarPlantilla(id)
         })
 
