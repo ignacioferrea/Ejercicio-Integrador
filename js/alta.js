@@ -67,7 +67,6 @@ const renderProds = () => {
             let html = template({productos: productos})
             
             // console.log(html) // Le agregó a la plantilla los datos de productos
-
             document.getElementById('listado-productos').innerHTML = html
         }
     })
@@ -114,18 +113,20 @@ function initAlta () {
     button.disabled = true
     const camposValidos = [false,false,false,false,false,false,false,false]
 
+    inputs.forEach((input, index) => {
+        if(input.type != 'checkbox') {
+            input.addEventListener('input', () => {
+                validar(input.value, regExpValidar[index]. index)
+            })
+        }
+    })
+
     form.addEventListener('submit', e => {
         e.preventDefault()
-    
-        // console.log(producto)
-        productos.push(producto) 
-    
         
-        console.log(productos)
-        
-        renderProds()
+        // guardarProducto()
     })
-    
-    renderProds()    
+
+    obtenerProductos()    
 }
 
