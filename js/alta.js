@@ -59,10 +59,10 @@ const renderProds = () => {
     xhr.addEventListener('load', () => {
         if(xhr.status === 200) {
             let plantillaHbs = xhr.response
-            console.log(plantillaHbs)
+            // console.log(plantillaHbs)
 
             let template = Handlebars.compile(plantillaHbs)
-            console.log(template)
+            // console.log(template)
 
             let html = template({productos: productos})
             
@@ -111,12 +111,12 @@ function initAlta () {
     button = document.querySelector('main form button')
 
     button.disabled = true
-    const camposValidos = [false,false,false,false,false,false,false,false]
+    camposValidos = [false,false,false,false,false,false,false,false]
 
     inputs.forEach((input, index) => {
         if(input.type != 'checkbox') {
             input.addEventListener('input', () => {
-                validar(input.value, regExpValidar[index]. index)
+                validar(input.value, regExpValidar[index], index)
             })
         }
     })
@@ -124,7 +124,7 @@ function initAlta () {
     form.addEventListener('submit', e => {
         e.preventDefault()
         
-        // guardarProducto()
+        guardarProducto()
     })
 
     obtenerProductos()    
