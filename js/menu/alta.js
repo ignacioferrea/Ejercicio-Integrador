@@ -3,6 +3,8 @@ class FormularioAlta {
     form = null 
     button = null 
     camposValidos = [false, false, false, false, false, false, false, false] 
+    
+    // Todas las expresiones regulares de los campos
     regExpValidar = [
         /^.+$/, // nombre
         /^.+$/, // precio
@@ -13,94 +15,107 @@ class FormularioAlta {
         /^.+$/ // foto
     ]
 
-    constructor() {
+    constructor(renderTablaAlta, guardarProducto) {
         this.inputs = document.querySelectorAll('main form input') 
         this.form = document.querySelector('main form')
         this.button = document.querySelector('main form button')
 
-        button.disabled = true
+        this.button.disabled = true
         
-        inputs.forEach((input, index) => {
+        this.inputs.forEach((input, index) => {
             if(input.type != 'checkbox') {
                 input.addEventListener('input', () => {
-                    validar(input.value, regExpValidar[index], index)
+                    this.validar(input.value, this.regExpValidar[index], index)
+                    if(renderTablaAlta) renderTablaAlta(!this.algunCampoValido(), productoController.productos)
                 })
             }
         })
 
-        form.addEventListener('submit', e => {
+        this.form.addEventListener('submit', e => {
             e.preventDefault()
+            
+            const producto = this.leerProductoIngresado()
+            this.limpiarFormulario()
 
-            guardarProducto()
+            if(guardarProducto) guardarProducto(producto)
+        })         
+    }
+
+    // Para comprobar la validez de los campos
+    algunCampoValido() {
+        let valido = 
+            camposValidos[0] &&
+            camposValidos[1] &&
+            camposValidos[2] &&
+            camposValidos[3] &&
+            camposValidos[4] &&
+            camposValidos[5] &&
+            camposValidos[6] 
+        return !valido
+    }
+
+    // Validar campos
+    validar(valor, validador, index) {
+        if(!validador.test(valor)) {
+            this.setCustomValidityJS('Este campo no es válido', index)
+            this.camposValidos[index] = false
+            this.button.disabled = true
+            return null // break
+        }
+
+        this.camposValidos[index] = true
+        this.button.disabled = this.algunCampoValido() // Si todos los campos son validos, retorna false(habilita el boton), de lo contrario retorna true y sigue sin habilitarse
+
+        this.setCustomValidityJS('', index)
+        return valor
+    }
+
+    // Mostrar u ocultar mensaje de validez
+    setCustomValidityJS(mensaje, index) {
+        let divs = document.querySelectorAll('form div')
+        divs[index].innerHTML = mensaje
+        divs[index].style.display = mensaje ? 'block' : 'none'
+    }
+
+    // Producto ingresado en el formulario
+    leerProductoIngresado() {
+        return {
+            nombre: this.inputs[0].value,
+            precio: this.inputs[1].value,
+            stock: this.inputs[2].value,
+            marca: this.inputs[3].value,
+            categoria: this.inputs[4].value,
+            detalles: this.inputs[5].value,
+            foto: this.inputs[6].value,
+            envio: this.inputs[7].checked
+        }
+    }
+
+    // Limpiamos los inputs del formulario
+    limpiarFormulario() {
+        // Borro todos los inputs
+        this.inputs.forEach(input => {
+            if(input.type != 'checkbox') input.value = ''
+            else if (input.type == 'checkbox') input.cheked = false
         })
-        
-        obtenerProductos()
+
+        this.button.disabled = true
+        this.camposValidos = [false,false,false,false,false,false,false,false]
     }
 }
 
-/* ----------------------------------------------- */
-/* Declaraciones de variables y funciones globales */
-/* ----------------------------------------------- */
-
-
-// Mostrar u ocultar mensaje de validez
-const setCustomValidityJS = (mensaje, index) => {
-    let divs = document.querySelectorAll('form div')
-    divs[index].innerHTML = mensaje
-    divs[index].style.display = mensaje ? 'block' : 'none'
-}
-
-// Para comprobar la validez de los campos
-const algunCampoValido = () => {
-    let valido = 
-        camposValidos[0] &&
-        camposValidos[1] &&
-        camposValidos[2] &&
-        camposValidos[3] &&
-        camposValidos[4] &&
-        camposValidos[5] &&
-        camposValidos[6] 
-    return !valido
-}
-
-// Validar campos
-const validar = (valor, validador, index) => {
-    if(!validador.test(valor)) {
-        setCustomValidityJS('Este campo no es válido', index)
-        camposValidos[index] = false
-        button.disabled = true
-        return null // break
-    }
-
-    camposValidos[index] = true
-    button.disabled = algunCampoValido() // Si todos los campos son validos, retorna false(habilita el boton), de lo contrario retorna true y sigue sin habilitarse
-
-    setCustomValidityJS('', index)
-    return valor
-}
-
-// Todas las expresiones regulares de los campos
-
-
-const renderProds = () => {
+// Rendereo plantilla
+const renderTablaAlta = (validos, productos) => {
     const xhr = new XMLHttpRequest()
     xhr.open('get', 'plantillas/listado.hbs')
     xhr.addEventListener('load', () => {
         if(xhr.status === 200) {
             let plantillaHbs = xhr.response
-            // console.log(plantillaHbs)
 
             let template = Handlebars.compile(plantillaHbs)
-            // console.log(template)
 
-            let html = template(
-                {
-                    productos: productos, 
-                    validos: !algunCampoValido()
-                }
-            )
-            
-            // console.log(html) // Le agregó a la plantilla los datos de productos
+            console.warn(productos)
+            let html = template({productos, validos})
             document.getElementById('listado-productos').innerHTML = html
         }
     })
@@ -108,36 +123,18 @@ const renderProds = () => {
     xhr.send()
 }
 
-// Producto ingresado en el formulario
-function leerProductoIngresado() {
-    return {
-        nombre: inputs[0].value,
-        precio: inputs[1].value,
-        stock: inputs[2].value,
-        marca: inputs[3].value,
-        categoria: inputs[4].value,
-        detalles: inputs[5].value,
-        foto: inputs[6].value,
-        envio: inputs[7].checked
-    }
-}
-
-// Limpiamos los inputs del formulario
-function limpiarFormulario() {
-    // Borro todos los inputs
-    inputs.forEach(input => {
-        if(input.type != 'checkbox') input.value = ''
-        else if (input.type == 'checkbox') input.cheked = false
-    })
-
-    button.disabled = true
-    camposValidos = [false,false,false,false,false,false,false,false]
-}
-
 /* -------------------------------------------------- */
 /* Inicializaciones para el funcionamiento del módulo */
 /* -------------------------------------------------- */
-function initAlta () {
+let formularioAlta = null
+
+
+async function initAlta () {
     console.warn('initAlta()')  
+
+    formularioAlta = new FormularioAlta(renderTablaAlta, productoController.guardarProducto)
+
+    const productos = await productoController.obtenerProductos()
+    renderTablaAlta(null, productos)
 }
 

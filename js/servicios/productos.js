@@ -24,5 +24,6 @@ class ProductoService {
     }
 }
 
+const productoService = new ProductoService()
 
 

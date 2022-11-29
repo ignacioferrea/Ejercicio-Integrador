@@ -46,3 +46,5 @@ class ProductoController {
         renderProds()
     }
 }
+
+const productoController = new ProductoController()
