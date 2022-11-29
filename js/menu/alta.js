@@ -16,6 +16,7 @@ class FormularioAlta {
     ]
 
     constructor(renderTablaAlta, guardarProducto) {
+        // console.log(renderTablaAlta, guardarProducto) // Referencias de las funciones
         this.inputs = document.querySelectorAll('main form input') 
         this.form = document.querySelector('main form')
         this.button = document.querySelector('main form button')
@@ -44,13 +45,13 @@ class FormularioAlta {
     // Para comprobar la validez de los campos
     algunCampoValido() {
         let valido = 
-            camposValidos[0] &&
-            camposValidos[1] &&
-            camposValidos[2] &&
-            camposValidos[3] &&
-            camposValidos[4] &&
-            camposValidos[5] &&
-            camposValidos[6] 
+            this.camposValidos[0] &&
+            this.camposValidos[1] &&
+            this.camposValidos[2] &&
+            this.camposValidos[3] &&
+            this.camposValidos[4] &&
+            this.camposValidos[5] &&
+            this.camposValidos[6] 
         return !valido
     }
 
