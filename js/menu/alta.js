@@ -108,7 +108,7 @@ class FormularioAlta {
 // Rendereo plantilla
 const renderTablaAlta = (validos, productos) => {
     const xhr = new XMLHttpRequest()
-    xhr.open('get', 'plantillas/listado.hbs')
+    xhr.open('get', 'plantillas/alta.hbs')
     xhr.addEventListener('load', () => {
         if(xhr.status === 200) {
             let plantillaHbs = xhr.response

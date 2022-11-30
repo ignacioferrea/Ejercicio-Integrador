@@ -1,49 +1,47 @@
-class ProductoController {
+class ProductoController extends ProductoModel {
     constructor() {
-        // super()
+        super()
+        this.guardarProducto = this.guardarProducto.bind(this)
     }
 
     async obtenerProductos() {
-        productos = await obtenerProductosService()
-        renderProds()
+        this.productos = await productoService.obtenerProductosService()
+        return this.productos
     }
     
-    async guardarProducto() {
-        const producto = leerProductoIngresado()
-        limpiarFormulario()
+    async guardarProducto(producto) {
+        const productoGuardado = await productoService.guardarProductoService(producto)
+        // console.log(productoGuardado)
     
-        const productoGuardado = await guardarProductoService(producto)
-        console.log(productoGuardado)
+        this.productos.push(productoGuardado)
     
-        productos.push(productoGuardado)
-    
-        renderProds()
+        renderTablaAlta(null, this.productos)
     }
     
     async actualizarProducto(id) {
         console.log('actualizarProducto', id)
     
-        const producto = leerProductoIngresado()
-        limpiarFormulario()
+        const producto = formularioAlta.leerProductoIngresado()
+        formularioAlta.limpiarFormulario()
     
-        const productoActualizado = await actualizarProductoService(id, producto)
-        console.log(productoActualizado)
+        const productoActualizado = await productoService.actualizarProductoService(id, producto)
+        // console.log(productoActualizado)
     
-        const index = productos.findIndex(producto => producto.id == productoActualizado.id)
-        productos.splice(index, 1, productoActualizado)
+        const index = this.productos.findIndex(producto => producto.id == productoActualizado.id)
+        this.productos.splice(index, 1, productoActualizado)
     
-        renderProds()
+        renderTablaAlta(null, this.productos)
     }
     
     async borrarProducto(id) {
         console.log('borrarProducto', id)
     
-        let productoBorrado = await borrarProductoService(id)
+        let productoBorrado = await productoService.borrarProductoService(id)
     
-        const index = productos.findIndex(producto => producto.id == productoBorrado.id)
-        productos.splice(index, 1)
+        const index = this.productos.findIndex(producto => producto.id == productoBorrado.id)
+        this.productos.splice(index, 1)
     
-        renderProds()
+        renderTablaAlta(null, this.productos)
     }
 }
 
