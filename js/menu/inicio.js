@@ -3,7 +3,7 @@ async function renderPlantillaListado(listado) {
     try {
         const respuesta = await fetch('plantillas/inicio.hbs')
         const plantillaHbs = await respuesta.text()
-        const template = Handblebars.compile(plantillaHbs)
+        const template = Handlebars.compile(plantillaHbs)
     
         const html = template({listado})
     
@@ -23,7 +23,7 @@ async function initInicio() {
     console.warn('initInicio()')
 
     const productos = await productoController.obtenerProductos()
-    await renderPlantillasListado(productos)
+    await renderPlantillaListado(productos) 
 
-    document.querySelector('.section-cards_header p').innerHTML = `Se encontraron ${productos.length} productos`
+    document.querySelector('.section-cards__header p').innerHTML = `Se encontraron ${productos.length} productos`
 }
