@@ -970,6 +970,9 @@ body {
 .container-alta button:hover {
   background-color: blueviolet;
 }
+.container-alta button:disabled {
+  background-color: red;
+}
 .container-alta input[type=checkbox] {
   display: inline;
   width: 15px;
