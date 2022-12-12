@@ -6,13 +6,11 @@ require('dotenv').config()
 
 // Middlewares
 app.use(express.static('public'))
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 // Routeo de mi aplicación
-app.get('/', (req, res) => {
-    res.send('Holaaaa')
-})
+app.use('/api/productos', require('./routers/productos'))
 
 const PORT = process.env.PORT
 app.listen(PORT, (err) => {
