@@ -115,7 +115,7 @@ const renderTablaAlta = (validos, productos) => {
 
             let template = Handlebars.compile(plantillaHbs)
 
-            console.warn(productos)
+            // console.warn(productos)
             let html = template({productos, validos})
             document.getElementById('listado-productos').innerHTML = html
         }
