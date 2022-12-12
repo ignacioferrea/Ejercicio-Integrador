@@ -11,12 +11,14 @@
             <th>Envio</th>
             <th>Acción</th>
         </tr>
+
+        {{#each carrito}}
         <tr>
             <td>{{nombre}}</td>
             <td>{{precio}}</td>
             <td>{{marca}}</td>
             <td>
-                <img src="{{imagen}}" alt="{{nombre}}">
+                <img style="display: block; margin: 0 auto;" src="{{imagen}}" alt="{{nombre}}" width="50">
             </td>
             <td>{{cantidad}}</td>
 
@@ -27,9 +29,10 @@
             {{/if}}
 
             <td>
-                <button>Borrar</button>
+                <button onclick="carritoController.borrarProductoCarrito({{id}})">Borrar</button>
             </td>
         </tr>
+        {{/each}}
     </table>
 {{else}}
     <h2>El carrito está vacío</h2>
