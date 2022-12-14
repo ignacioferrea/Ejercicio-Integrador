@@ -1,6 +1,6 @@
 const ProductoModel = require("../model/productos");
 
-const model = ProductoModel.get('MONGODB') // MONGODB || FILE
+const model = ProductoModel.get(process.env.PERSISTENCIA || 'MONGODB') // MONGODB || FILE
 
 const obtenerProducto = async id => {
     let producto = await model.readProducto(id)
