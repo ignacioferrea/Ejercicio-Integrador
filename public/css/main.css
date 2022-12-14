@@ -949,6 +949,7 @@ body {
 
 .container-alta {
   padding: 10px;
+  /* DROP AREA */
 }
 .container-alta h1, .container-alta h2 {
   color: blue;
@@ -979,7 +980,7 @@ body {
   height: 15px;
   margin-top: 10px;
 }
-.container-alta form div {
+.container-alta form .mensaje-validacion {
   border: 1px solid crimson;
   background-color: gold;
   color: darkred;
@@ -996,6 +997,33 @@ body {
 }
 .container-alta #listado-productos {
   width: 100%;
+}
+.container-alta #drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 300px;
+  margin: 25px 0;
+  padding: 20px;
+}
+.container-alta .button {
+  display: inline-block;
+  padding: 10px;
+  background-color: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.container-alta #foto {
+  display: none;
+}
+.container-alta #gallery img {
+  width: 100px;
+  margin-top: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.container-alta #drop-area.highlight {
+  border-color: purple;
 }
 
 .section-carrito {
