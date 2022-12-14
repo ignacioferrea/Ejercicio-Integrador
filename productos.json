@@ -1,0 +1,13 @@
+[
+	{
+		"nombre": "Producto A",
+		"precio": "85000",
+		"stock": "5",
+		"marca": "Marca A",
+		"categoria": "Categoria A",
+		"detalles": "Detalles A",
+		"foto": "fotoA.jpg",
+		"envio": "true",
+		"id": "1"
+	}
+]
