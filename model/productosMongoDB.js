@@ -61,7 +61,16 @@ class ProductoModelMongoDB {
 
     /* CRUD -> U: Update -> http method PUT */
     async updateProducto(id, producto) {
-        
+        try {
+            const resultado = await ProductoModel.updateOne({_id: id}, {$set: producto})
+
+            const productoActualizado = await ProductoModel.findById(id)
+            
+            return {resultado, productoActualizado}
+
+        } catch (error) {
+            console.log(`Error en updateProducto: ${error}`)
+        }
     }
 
     /* CRUD -> D: Delete -> http method DELETE */

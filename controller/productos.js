@@ -1,5 +1,6 @@
 const service = require('../service/productos')
 
+/* ----- obtenerProductos ------ */
 const obtenerProductos = async (req, res) => {
     let id = req.params.id 
 
@@ -14,16 +15,24 @@ const obtenerProductos = async (req, res) => {
     
 }
 
+/* ----- guardarProducto ------ */
 const guardarProducto = async (req, res) => {
     const producto = req.body
     const productoGuardado = await service.guardarProducto(producto)
     res.status(201).json(productoGuardado)
 }
 
-const actualizarProducto = (req, res) => {
-    res.send('Soy un controlador re piola')
+/* ----- actualizarProducto ------ */
+const actualizarProducto = async (req, res) => {
+    const { id } = req.params
+    const producto = req.body
+
+    const productoActualizado = await service.actualizarProducto(id, producto)
+
+    res.status(200).json({productoActualizado})
 }
 
+/* ----- borrarProductos ------ */
 const borrarProductos = async (req, res) => {
     const { id } = req.params
 
