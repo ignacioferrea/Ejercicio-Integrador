@@ -11,6 +11,8 @@ app.use(express.json())
 
 // Routeo de mi aplicación
 app.use('/api/productos', require('./routers/productos'))
+app.use('/api/carrito', require('./routers/carrito'))
+app.use('/api/upload', require('./routers/upload'))
 
 const PORT = process.env.PORT
 app.listen(PORT, (err) => {
