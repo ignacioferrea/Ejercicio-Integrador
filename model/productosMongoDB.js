@@ -66,7 +66,12 @@ class ProductoModelMongoDB {
 
     /* CRUD -> D: Delete -> http method DELETE */
     async deleteProducto(id) {
-        
+        try {
+            const productoBorrado = await ProductoModel.findByIdAndDelete(id)
+            return productoBorrado
+        } catch (error) {
+            console.log(`Error en deleteProducto: ${error}`)
+        }
     }
 }
 
