@@ -2,7 +2,7 @@ class FormularioAlta {
     inputs = null 
     form = null 
     button = null 
-    camposValidos = [false, false, false, false, false, false, false, false] 
+    camposValidos = [false, false, false, false, false, false, false] 
     
     // Todas las expresiones regulares de los campos
     regExpValidar = [
@@ -14,6 +14,12 @@ class FormularioAlta {
         /^.+$/, // detalles
         /^.+$/ // foto
     ]
+
+    /* ##### Drag & Drop ##### */
+    imagenSubida = ''
+    dropArea = null
+    progressBar = null
+    /* ##### Drag & Drop ##### */
 
     constructor(renderTablaAlta, guardarProducto) {
         // console.log(renderTablaAlta, guardarProducto) // Referencias de las funciones
@@ -40,6 +46,37 @@ class FormularioAlta {
 
             if(guardarProducto) guardarProducto(producto)
         })         
+
+        /* ##### Drag & Drop ##### */
+        this.dropArea = document.getElementById('drop-area')
+        this.progressBar = document.getElementById('progress-bar')
+
+        // Cancelo el evento automatico del drag&drop
+        ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            this.dropArea.addEventListener(eventName, e => e.preventDefault())
+            document.body.addEventListener(eventName, e => e.preventDefault())
+        })
+
+        // Remarco la zona de drop al arrastrar la imagen dentro
+        ;['dragenter', 'dragover'].forEach(eventName => {
+            this.dropArea.addEventListener(eventName, () => {
+                this.dropArea.classList.add('highlight')
+            })
+        })
+
+        ;['dragleave', 'drop'].forEach(eventName => {
+            this.dropArea.addEventListener(eventName, () => {
+                this.dropArea.classList.remove('highlight')
+            })
+        })
+
+        this.dropArea.addEventListener('drop', e => {
+            const dataTransf = e.dataTransfer
+            const files = dataTransf.files
+
+            this.handleFiles(files)
+        })
+        /* ##### Drag & Drop ##### */
     }
 
     // Para comprobar la validez de los campos
@@ -87,7 +124,7 @@ class FormularioAlta {
             marca: this.inputs[3].value,
             categoria: this.inputs[4].value,
             detalles: this.inputs[5].value,
-            foto: this.inputs[6].value,
+            foto: this.imagenSubida ? `/uploads/${this.imagenSubida}` : '',
             envio: this.inputs[7].checked
         }
     }
@@ -101,8 +138,65 @@ class FormularioAlta {
         })
 
         this.button.disabled = true
-        this.camposValidos = [false,false,false,false,false,false,false,false]
+        this.camposValidos = [false, false, false, false, false, false, false]
+        
+        const img = document.querySelector('#gallery img')
+        img.src = ''
+
+        this.initializeProgress()
+        this.imagenSubida = ''
     }
+
+    /* #### Drag & Drop #### */
+    initializeProgress() {
+        this.progressBar.value = 0
+    }
+
+    updateProgress(porcentaje) {
+        this.progressBar.value = porcentaje
+    }
+
+    previewFile(file) {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = function() {
+            const img = document.querySelector('#gallery img')
+            img.src = reader.result
+        }
+    }
+
+    handleFiles = files => {
+        const file = files[0]
+        this.initializeProgress()
+        this.uploadFile(file)
+        this.previewFile(file)
+    }
+
+    uploadFile = file => {
+        const url = '/api/upload'
+
+        const xhr = new XMLHttpRequest()
+        const formData = new FormData()
+
+        xhr.open('POST', url)
+
+        xhr.upload.addEventListener('progress', e => {
+            let porcentaje = (((e.loaded * 100.0) / e.total) || 100)
+            this.updateProgress(porcentaje)
+        })
+
+        xhr.addEventListener('load', () => {
+            if (xhr.status === 200) {
+                const objImagen = JSON.parse(xhr.response) 
+                this.imagenSubida = objImagen.nombre // {nombre: imageName.jpg}
+            }
+        })
+
+        formData.append('foto', file)
+        xhr.send(formData)
+    }
+
+    /* #### Drag & Drop #### */
 }
 
 // Rendereo plantilla
