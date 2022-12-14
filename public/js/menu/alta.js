@@ -73,7 +73,7 @@ class FormularioAlta {
 
     // Mostrar u ocultar mensaje de validez
     setCustomValidityJS(mensaje, index) {
-        let divs = document.querySelectorAll('form div')
+        let divs = document.querySelectorAll('form .mensaje-validacion')
         divs[index].innerHTML = mensaje
         divs[index].style.display = mensaje ? 'block' : 'none'
     }
