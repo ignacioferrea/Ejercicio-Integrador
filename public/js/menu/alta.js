@@ -2,7 +2,7 @@ class FormularioAlta {
     inputs = null 
     form = null 
     button = null 
-    camposValidos = [false, false, false, false, false, false, false] 
+    camposValidos = [false, false, false, false, false, false] 
     
     // Todas las expresiones regulares de los campos
     regExpValidar = [
@@ -12,7 +12,6 @@ class FormularioAlta {
         /^.+$/, // marca
         /^.+$/, // categoria
         /^.+$/, // detalles
-        /^.+$/ // foto
     ]
 
     /* ##### Drag & Drop ##### */
@@ -23,7 +22,7 @@ class FormularioAlta {
 
     constructor(renderTablaAlta, guardarProducto) {
         // console.log(renderTablaAlta, guardarProducto) // Referencias de las funciones
-        this.inputs = document.querySelectorAll('main form input') 
+        this.inputs = document.querySelectorAll('main form input.data-validation') 
         this.form = document.querySelector('main form')
         this.button = document.querySelector('main form button')
 
@@ -77,7 +76,18 @@ class FormularioAlta {
             this.handleFiles(files)
         })
         /* ##### Drag & Drop ##### */
+
+        const inputFoto = document.querySelector('#foto')
+
+        inputFoto.addEventListener('change', () => {
+          console.log('Cambió el input')
+
+          const files = inputFoto.files
+
+          this.handleFiles(files)
+        })
     }
+
 
     // Para comprobar la validez de los campos
     algunCampoValido() {
@@ -87,8 +97,7 @@ class FormularioAlta {
             this.camposValidos[2] &&
             this.camposValidos[3] &&
             this.camposValidos[4] &&
-            this.camposValidos[5] &&
-            this.camposValidos[6] 
+            this.camposValidos[5] 
         return !valido
     }
 
@@ -125,7 +134,7 @@ class FormularioAlta {
             categoria: this.inputs[4].value,
             detalles: this.inputs[5].value,
             foto: this.imagenSubida ? `/uploads/${this.imagenSubida}` : '',
-            envio: this.inputs[7].checked
+            envio: this.inputs[6].checked
         }
     }
 
@@ -138,7 +147,7 @@ class FormularioAlta {
         })
 
         this.button.disabled = true
-        this.camposValidos = [false, false, false, false, false, false, false]
+        this.camposValidos = [false, false, false, false, false, false]
         
         const img = document.querySelector('#gallery img')
         img.src = ''
