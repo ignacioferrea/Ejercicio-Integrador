@@ -1,5 +1,5 @@
 class ProductoService {
-    URL_PRODUCTOS = 'https://6372b00a348e947299fb5255.mockapi.io/productos/'
+    URL_PRODUCTOS = '/api/productos/'
 
     async obtenerProductosService() {
         let productos = await http.get(this.URL_PRODUCTOS)
