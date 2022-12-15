@@ -20,6 +20,8 @@ const ProductoModel = mongoose.model('productos', productoSchema)
 
 class ProductoModelMongoDB {
 
+    static pk = '_id'
+
     async conectarDB() {
         try {
           await mongoose.connect(process.env.URI_MONGODB_LOCAL)
@@ -30,11 +32,28 @@ class ProductoModelMongoDB {
         }
     }
 
+    genIdKey(obj) {
+        if (Array.isArray(obj)) {
+            for (let i = 0; i<obj.length; i++) {
+                obj[i].id = obj[i][this.pk]
+            }
+        }
+        else {
+            obj.id = obj[this.pk]
+        }
+
+        return obj
+    }
+
     /* CRUD -> C: Create -> http method POST */
     async createProducto(producto) {
         try {
             const productoSave = new ProductoModel(producto)
             await productoSave.save()
+
+            const productos = await ProductoModel.find({}).lean()
+            const productoGuardado = productos[productos.length-1]
+            return this.genIdKey(productoGuardado)
 
             return productoSave
 
@@ -46,20 +65,22 @@ class ProductoModelMongoDB {
     /* CRUD -> R: Read All -> http method GET */
     async readProductos() {
         try {
-            const productos = await ProductoModel.find({})
-            return productos 
+            const productos = await ProductoModel.find({}).lean()
+            return this.genIdKey(productos) 
         } catch (error) {
-            console.log(error)
+            console.log(`Error en readProductos: ${error}`)
+            return []
         }
     }
 
     /* CRUD -> R: Read One -> http method GET */
     async readProducto(id) {
         try {
-            const producto = await ProductoModel.findById(id)
-          return producto 
+            const producto = await ProductoModel.findById(id).lean()
+            return this.genIdKey(producto) 
         } catch (error) {
-            console.log(error)
+            console.log(`Error en readProducto: ${error}`)
+            return {}
         }
     }
 
@@ -68,12 +89,13 @@ class ProductoModelMongoDB {
         try {
             const resultado = await ProductoModel.updateOne({_id: id}, {$set: producto})
 
-            const productoActualizado = await ProductoModel.findById(id)
+            const productoActualizado = await ProductoModel.findById(id).lean()
             
-            return {resultado, productoActualizado}
+            return this.genIdKey(productoActualizado)
 
         } catch (error) {
             console.log(`Error en updateProducto: ${error}`)
+            return {}
         }
     }
 
@@ -81,9 +103,10 @@ class ProductoModelMongoDB {
     async deleteProducto(id) {
         try {
             const productoBorrado = await ProductoModel.findByIdAndDelete(id)
-            return productoBorrado
+            return this.genIdKey(productoBorrado)
         } catch (error) {
             console.log(`Error en deleteProducto: ${error}`)
+            return {}
         }
     }
 }
