@@ -9,8 +9,8 @@ const obtenerProductos = async (req, res) => {
         return res.status(200).json(producto)
     }
     else {
-        const producto = await service.obtenerProductos()
-        return res.status(200).json(producto)
+        const productos = await service.obtenerProductos()
+        return res.status(200).json(productos)
     }
     
 }
@@ -29,11 +29,11 @@ const actualizarProducto = async (req, res) => {
 
     const productoActualizado = await service.actualizarProducto(id, producto)
 
-    res.status(200).json({productoActualizado})
+    res.status(200).json( productoActualizado )
 }
 
 /* ----- borrarProductos ------ */
-const borrarProductos = async (req, res) => {
+const borrarProducto = async (req, res) => {
     const { id } = req.params
 
     if (!id) {
@@ -46,6 +46,7 @@ const borrarProductos = async (req, res) => {
     }
     
     const productoBorrado = await service.borrarProducto(id)
+    
     res.status(200).json(
         {
             borrado: true,
@@ -59,5 +60,5 @@ module.exports = {
     obtenerProductos,
     guardarProducto,
     actualizarProducto,
-    borrarProductos
+    borrarProducto
 }

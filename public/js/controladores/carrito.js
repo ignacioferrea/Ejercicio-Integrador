@@ -17,7 +17,7 @@ class CarritoController extends CarritoModel {
         return this.carrito.filter(prod => prod.id == producto.id).length
     }
 
-    obtenerProductoDeCarrito() {
+    obtenerProductoDeCarrito(producto) {
         return this.carrito.find(prod => prod.id == producto.id)
     }
 
@@ -44,7 +44,7 @@ class CarritoController extends CarritoModel {
     
             await renderTablaCarrito(this.carrito)
         } catch (error) {
-            console.error(error)
+            console.log(error)
         }
     }
 
@@ -61,7 +61,6 @@ class CarritoController extends CarritoModel {
 
             setTimeout( async () => {
                 elemSectionCarrito.classList.remove('section-carrito--visible')
-                // mostrarCarrito = false
                 await renderPago(preference)
             }, 0)
         } catch (error) {

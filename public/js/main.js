@@ -4,8 +4,8 @@ class Main {
         try {
             const respuesta = await fetch(url, {method: metodo})
             const resultado = await respuesta.text()
-            
             return resultado
+            
         } catch (error) {
             console.error(error)
         }

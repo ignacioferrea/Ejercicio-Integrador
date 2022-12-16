@@ -7,7 +7,7 @@ async function renderTablaCarrito(carrito) {
         const respuesta = await fetch('plantillas/carrito.hbs')
         const plantillaHbs = await respuesta.text()
         const template = Handlebars.compile(plantillaHbs)
-        const html = template({carrito})
+        const html = template({ carrito })
 
         elemSectionCarrito.innerHTML = html
         elemSectionCarrito.classList.add('section-carrito--visible')

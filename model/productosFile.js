@@ -22,7 +22,7 @@ class ProductoModelFile {
     }
 
     getId(productos) {
-        return productos.length ? (productos[productos.length - 1].id + 1) : 1
+        return productos.length ? productos[productos.length - 1].id + 1 : 1
     }
 
     /* Crud => C: Create - http method POST */
@@ -45,7 +45,7 @@ class ProductoModelFile {
     async readProducto(id) {
         const productos = await this.leerArchivoProductos()
 
-        const producto = productos.find(producto => producto.id == id) || {}
+        const producto = productos.find((producto) => producto.id == id) || {}
         
         return producto
     }
@@ -55,7 +55,7 @@ class ProductoModelFile {
         const productos = await this.leerArchivoProductos()
 
         producto.id = id
-        const index = productos.findIndex(producto => producto.id == id)
+        const index = productos.findIndex((producto) => producto.id == id)
         productos.splice(index, 1, producto)
 
         await this.guardarArchivoProductos(productos)
@@ -67,7 +67,7 @@ class ProductoModelFile {
     async deleteProducto(id) {
         const productos = await this.leerArchivoProductos()
 
-        const index = productos.findIndex(producto => producto.id == id)
+        const index = productos.findIndex((producto) => producto.id == id)
         const producto = productos.splice(index, 1)[0]
 
         await this.guardarArchivoProductos(productos)

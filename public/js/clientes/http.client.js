@@ -54,7 +54,7 @@ class Http {
             const respuesta = await fetch(url + id, {
                 method:'delete'
             })
-            const resultado = await respuesta.json
+            const resultado = await respuesta.json()
 
             return resultado
         } catch (error) {

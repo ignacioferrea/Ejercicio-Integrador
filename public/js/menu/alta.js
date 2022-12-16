@@ -37,7 +37,7 @@ class FormularioAlta {
             }
         })
 
-        this.form.addEventListener('submit', e => {
+        this.form.addEventListener('submit', (e) => {
             e.preventDefault()
             
             const producto = this.leerProductoIngresado()
@@ -219,7 +219,7 @@ const renderTablaAlta = (validos, productos) => {
             let template = Handlebars.compile(plantillaHbs)
 
             // console.warn(productos)
-            let html = template({productos, validos})
+            let html = template({ productos, validos })
             document.getElementById('listado-productos').innerHTML = html
         }
     })

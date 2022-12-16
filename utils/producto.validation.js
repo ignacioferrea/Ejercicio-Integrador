@@ -15,9 +15,9 @@ class ProductoValidation {
 
         const { error } = productoSchema.validate(producto)
 
+        console.log(error)
         return error
     }
-
 }
 
 module.exports = ProductoValidation

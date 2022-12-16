@@ -1,4 +1,4 @@
-const uploadImagen = (req, res) => {
+const uploadImagen = (req, res, next) => {
     const file = req.file
     
     if (!file) {

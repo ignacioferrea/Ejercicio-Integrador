@@ -13,6 +13,6 @@ routerProductos.post('/', controlador.guardarProducto)
 routerProductos.put('/:id', controlador.actualizarProducto)
 
 /* DELETE (Delete) - Request para borrar un producto*/
-routerProductos.delete('/:id', controlador.borrarProductos)
+routerProductos.delete('/:id', controlador.borrarProducto)
 
 module.exports = routerProductos

@@ -4,12 +4,12 @@ const ProductoValidation = require("../utils/producto.validation");
 const model = ProductoModel.get(process.env.PERSISTENCIA || 'MONGODB') // MONGODB || FILE
 
 const obtenerProducto = async id => {
-    let producto = await model.readProducto(id)
+    const producto = await model.readProducto(id)
     return producto
 }
 
 const obtenerProductos = async () => {
-    let productos = await model.readProductos()
+    const productos = await model.readProductos()
     return productos
 }
 
@@ -39,7 +39,7 @@ const actualizarProducto = async (id, producto) => {
     }
 }
 
-const borrarProducto = async (id) => {
+const borrarProducto = async id => {
     const productoEliminado = await model.deleteProducto(id)
     return productoEliminado
 }
