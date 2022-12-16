@@ -55,8 +55,6 @@ class ProductoModelMongoDB {
             const productoGuardado = productos[productos.length-1]
             return this.genIdKey(productoGuardado)
 
-            return productoSave
-
         } catch (error) {
             console.log(`Error en el createProducto: ${error}`)
         }
