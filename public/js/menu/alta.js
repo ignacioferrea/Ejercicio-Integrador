@@ -104,7 +104,7 @@ class FormularioAlta {
     // Validar campos
     validar(valor, validador, index) {
         if(!validador.test(valor)) {
-            this.setCustomValidityJS('Este campo no es válido', index)
+            this.setCustomValidityJS('&#9940; Este campo no es válido', index)
             this.camposValidos[index] = false
             this.button.disabled = true
             return null // break

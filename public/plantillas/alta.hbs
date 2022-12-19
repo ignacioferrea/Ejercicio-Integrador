@@ -26,15 +26,15 @@
         {{else}}
             <td>No</td>
         {{/if}}
-        <td>
+        <td class="tdEditar">
             {{#if ../validos}}
-                <button onclick="productoController.actualizarProducto('{{id}}')">Actualizar</button>
+                <button onclick="productoController.actualizarProducto('{{id}}')" class="buttonEditar"><img src="../img/otros/editar.svg" alt="editar"></button>
             {{else}}
-                <button disabled onclick="productoController.actualizarProducto('{{id}}')">Actualizar</button>
+                <button disabled onclick="productoController.actualizarProducto('{{id}}')" class="buttonEditar"><img src="../img/otros/editar.svg" alt="editar"></button>
             {{/if}}
         </td>
-        <td>
-            <button onclick="productoController.borrarProducto('{{id}}')">Borrar</button>
+        <td class="tdBorrar">
+            <button onclick="productoController.borrarProducto('{{id}}')" class="buttonBorrar"><img src="../img/otros/borrar.svg" alt="borrar"></button>
         </td>
     </tr>
     {{/each}}

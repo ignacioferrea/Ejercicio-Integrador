@@ -1,6 +1,7 @@
 
 <div class="container-alta">
     <h1>Alta</h1>
+    <span></span>
     <form autocomplete="off">
         <!-- Campo de nombre -->
         <label for="nombre">Nombre</label>
@@ -33,29 +34,25 @@
         <div class="mensaje-validacion"></div>
 
         <div id="drop-area">
-            <p>Subir imagen al servidor con <b>file dialog</b> o con <b>drag and drop</b> dentro del área punteada</p>
-            <br>
+            <p>Arrastra una imagen</p>
+            <p>o</p>
             <input type="file" id="foto" accept="image/*">
-            <label class="button" for="foto">File Dialog</label>
-            <br>
-            <br>
+            <label class="button" for="foto">Carga una imagen</label>
+
             <progress id="progress-bar" max="100" value="0"></progress>
             <div id="gallery"><img src="" alt=""></div>
         </div>
 
         <!-- Campo de envio -->
-        <label for="envio">Envio</label>
-        <input type="checkbox" class="data-validation" id="envio">
-        <div></div>
-
-        <button>Agregar</button>
+        <div class="envio-container">
+            <label for="envio">Envio</label>
+            <input type="checkbox" class="data-validation" id="envio">
+        </div>        
+        
+        <button class="buttonAgregar">Agregar</button>
     </form>
 
-    <hr>
-
-    <h2>Listado de productos</h2>
-    
-    <hr>
+    <h2 id="listadoH2">Listado de productos</h2>
 
     <div id="listado-productos"></div>
 </div>
