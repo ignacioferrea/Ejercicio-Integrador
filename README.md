@@ -1,4 +1,9 @@
-# Pasos para levantar el ambiente
+# Ejercicio integrador - Educacion IT 
+
+- Alumno: Ignacio Ferrea
+- Proyecto: E-commerce
+
+## Pasos para levantar el ambiente
 
 1. Bajar el zip
 
