@@ -6,21 +6,12 @@
   box-sizing: inherit;
 }
 
-html {
-  background-color: rgb(29, 29, 29);
-}
-
 #body {
   box-sizing: border-box;
-  background-color: #fff;
-  height: 100vh;
   font-family: "Helvetica Neue",Helvetica,sans-serif;
-  background-color: rgb(27, 27, 27);
+  background-color: rgb(29, 29, 29);
 }
 
 #main {
-  margin: 0px;
   background-color: rgb(29, 29, 29);
-  height: max-content;
-  padding: 0px;
 }

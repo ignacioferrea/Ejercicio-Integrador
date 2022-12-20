@@ -8,6 +8,7 @@ async function renderPago(preference) {
     let html = await fetch('vistas/pago.html').then(r => r.text())
 
     document.querySelector('main').style.display = 'none'
+    document.querySelector('body').style.height = '100vh'
     document.querySelector('.section-pago').innerHTML = html
 
     createCheckoutButton(preference.id)
@@ -36,6 +37,7 @@ async function renderPago(preference) {
     // Go back
     document.getElementById("go-back").addEventListener("click", function () {
         document.querySelector('main').style.display = 'block'
+        document.querySelector('body').style.removeProperty('height')
         document.querySelector('.section-pago').innerHTML = ''
     });
 }

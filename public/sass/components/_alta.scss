@@ -234,6 +234,10 @@
         padding: .6%;
     }
 
+    & td {
+        padding: .5%;
+    }
+
     & .trProductos:nth-child(2n + 1) {
         background-color: #32277c;
     }
@@ -246,6 +250,11 @@
         & img {
             width: 50%;
         }
+    }
+
+    & .buttonEditar, & .buttonBorrar {
+        min-width: 25px;
+        min-height: 19px;
     }
 
     & .buttonEditar {
