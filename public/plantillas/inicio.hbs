@@ -1,6 +1,6 @@
 {{#if listado.length}}
     {{#each listado}}
-        <a href="#" class="card" onclick="agregarCarrito(event, '{{id}}', this)">
+        <a href="#" class="card">
             <article class="card__article">
                 <div class="card__image-container">
                     <img class="card__image" src="{{foto}}" alt="{{nombre}}"/>
@@ -12,6 +12,7 @@
                     </div>
                 </div>
             </article>
+            <button id="btnComprar" onclick="agregarCarrito(event, '{{id}}', this)">Comprar</button>
         </a>
     {{/each}}
 {{else}}

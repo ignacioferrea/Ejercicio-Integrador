@@ -98,7 +98,7 @@
 
 .search-bar {
     background-color: rgb(7, 7, 7);
-    border-bottom: 1px solid rgb(119, 119, 119);
+    border-bottom: 1px solid rgb(20, 19, 19);
     display: flex;
     justify-content: space-between;
 
@@ -158,8 +158,13 @@
         border: none;
         color: white;
         height: 40px;
+        width: 40px;
         margin-top: 25px;
         transition: .2s all;
+
+        & img {
+            width: 28px;
+        }
         
         &:hover {
             background-color: #745fff;
@@ -178,6 +183,7 @@
         display: flex;
         flex-basis: 5em;
         justify-content: center;
+        position: relative;
 
         &:hover {
             border-bottom: 3px solid #816eff; 
@@ -186,6 +192,20 @@
 
         & img {
             width: 50%;
+        }
+
+        & #contador {
+            width: 15px;
+            height: 15px;
+            border-radius: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            background-color: #583eff;
+            color: white;
+            position: absolute;
+            top: 18%;
+            right: 18%;
         }
     }
 

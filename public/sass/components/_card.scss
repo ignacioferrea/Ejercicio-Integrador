@@ -8,6 +8,7 @@
     text-decoration: none;
     transition: all .2s;
     width: 280px;
+    position: relative;
 
     &:hover, &:focus {
         box-shadow: 0 1px 4px rgba(0,0,0, 0.2), 0 0 2px rgba(0,0,0, .4);
@@ -16,6 +17,7 @@
     &__content {
         padding: 1em;
         text-align: center;
+    
     }
 
     &__heading {
@@ -26,6 +28,10 @@
     &__image-container {
         height: 220px;
         overflow: hidden;
+        border-bottom: solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(90deg, #6952f9, #ff83fb 73%, #ffc701);
+        border-width: 2px;
     }
 
     &__image {
@@ -33,6 +39,27 @@
         object-fit: cover;
         transition: .2s;
         width: 100%;
+    }
+
+    & #btnComprar {
+        position: absolute;
+        top: 92%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        background-color: rgb(39, 153, 54);
+        cursor: pointer;
+        border-radius: 8px;
+        border: 1px solid rgb(35, 128, 47);
+
+        &:hover {
+            background-color: rgb(83, 211, 100);
+            border: 1px solid rgb(71, 185, 86);
+        }
+
     }
 
     &:hover &__image, &:focus &__image {
@@ -67,8 +94,16 @@
             display: block;
         }
 
+        & #btnComprar {
+            display: none;
+        }
+
+        &:hover #btnComprar {
+            display: block;
+        } 
+
         &__image-container {
-            height: 330px;
+            height: 300px;
             overflow: hidden;
             transition: .1s;
         }

@@ -11,11 +11,11 @@ async function renderTablaCarrito(carrito) {
 
         elemSectionCarrito.innerHTML = html
         elemSectionCarrito.classList.add('section-carrito--visible')
+        carritoController.precioFinal()
 
     } catch (error) {
         console.error(error)
     }
-    
 }
 
 
@@ -23,24 +23,20 @@ function initCarrito() {
     console.warn('initCarrito()')
 
     const btnCarrito = document.getElementsByClassName('search-bar__carrito-container')[0]
-    const elemSectionCarrito = document.getElementsByClassName('section-carrito')[0]
 
     btnCarrito.addEventListener('click', async () => {
         mostrarCarrito = !mostrarCarrito
 
         try {
-            if(mostrarCarrito) {
-                await renderTablaCarrito(carritoController.carrito)
-            } 
-            else {
-                elemSectionCarrito.classList.remove('section-carrito--visible')
-            }
+            await renderTablaCarrito(carritoController.carrito)
 
         } catch (error) {
             console.error(error)
         }
         
     })
+
+    carritoController.cuentaProds()
 }
 
 initCarrito()

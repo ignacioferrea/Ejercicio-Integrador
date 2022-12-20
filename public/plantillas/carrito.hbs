@@ -1,3 +1,4 @@
+<button id="btn__Cerrar" onclick="carritoController.cerrarCarrito()"><img src="../img/otros/cerrar.svg" alt=""></button>
 {{#if carrito.length}}
     <table>
         <tr>
@@ -15,7 +16,7 @@
             <td>{{precio}}</td>
             <td>{{marca}}</td>
             <td>
-                <img style="display: block; margin: 0 auto;" src="{{imagen}}" alt="{{nombre}}" width="50">
+                <img style="display: block; margin: 0 auto;" src="{{foto}}" alt="{{nombre}}" width="50">
             </td>
             <td>{{cantidad}}</td>
 
@@ -32,8 +33,9 @@
         {{/each}}
     </table>
 
+    <p id="precioFinal"></p>
     <button class="btn__enviarCarrito" onclick="carritoController.enviarCarrito()"><img src="../img/otros/enviar.svg" alt="enviar"> Enviar</button>
 {{else}}
-    <h2>El carrito está vacío</h2>
+    <h2 style="height: 80px;">El carrito está vacío</h2>
 {{/if}}
 

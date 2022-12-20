@@ -13,6 +13,44 @@ class CarritoController extends CarritoModel {
         }    
     }
 
+    cerrarCarrito() {
+        const carrito = document.getElementsByClassName('section-carrito')[0]
+        carrito.classList.remove('section-carrito--visible')
+    }
+
+    cantProductos() {
+        let totalProds = 0
+        this.carrito.forEach(prod => {
+            totalProds += prod.cantidad
+        })
+        return totalProds
+    }
+
+    cuentaProds() {
+        let contador = document.getElementById('contador') 
+
+        if(this.cantProductos()) {
+            contador.style.display = 'block'
+            contador.innerHTML = this.cantProductos()
+        }
+        else {
+            contador.style.display = 'none'
+        }
+    }
+
+    precioFinal() {
+        let total = 0
+        const containerPrecio = document.getElementById('precioFinal')
+        
+        this.carrito.forEach(prod => {
+            total += prod.precio * prod.cantidad
+        })
+
+        if (this.cantProductos()) {
+            containerPrecio.innerHTML = `Total: $${total}`
+        }
+    }
+
     elProductoEstaEnElCarrito(producto) {
         return this.carrito.filter(prod => prod.id == producto.id).length
     }
@@ -26,14 +64,15 @@ class CarritoController extends CarritoModel {
         if(!this.elProductoEstaEnElCarrito(producto)) {
             producto.cantidad = 1
             this.carrito.push(producto)
+            this.cuentaProds()
         }
         else {
             const productoDeCarrito = this.obtenerProductoDeCarrito(producto)
             productoDeCarrito.cantidad++
+            this.cuentaProds()
         }
-
+        
         localStorage.setItem('carrito', JSON.stringify(this.carrito))
-
     }
 
     async borrarProductoCarrito(id) {
@@ -41,6 +80,8 @@ class CarritoController extends CarritoModel {
             const index = this.carrito.findIndex(prod => prod.id == id)
             this.carrito.splice(index, 1)
             localStorage.setItem('carrito', JSON.stringify(this.carrito))
+            this.cuentaProds()
+            this.precioFinal()
     
             await renderTablaCarrito(this.carrito)
         } catch (error) {
@@ -56,6 +97,7 @@ class CarritoController extends CarritoModel {
             const preference = await carritoService.guardarCarritoServicio(this.carrito)
             this.carrito = []
             localStorage.setItem('carrito', JSON.stringify(this.carrito))
+            this.cuentaProds()
 
             elemSectionCarrito.innerHTML = '<h2>Enviando carrito <b>OK!</b></h2>'
 
@@ -66,7 +108,6 @@ class CarritoController extends CarritoModel {
         } catch (error) {
             console.error(error)
         }
-        
     }
 }
 

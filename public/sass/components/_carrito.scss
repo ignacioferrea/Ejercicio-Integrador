@@ -3,17 +3,14 @@
     position: fixed;
     width: 50%;
     min-width: 421px;
-    height: 50%;
+    height: max-content;
     z-index: 1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.36);
+    background-color: rgb(20, 20, 20);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6.7px);
-    -webkit-backdrop-filter: blur(6.7px);
-    border: 1px solid rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(146, 82, 255, 0.747);
     color: white;
     
     &--visible {
@@ -29,6 +26,7 @@
         margin-top: 1%;
 
         & th {
+            padding: 1% 0;
 
             &:nth-child(1) {
                 border-top-left-radius: 12px;
@@ -37,12 +35,14 @@
             &:nth-child(6) {
                 border-top-right-radius: 12px;
             }
-            
+        }
+
+        & td {
+            padding: .5% 0;
         }
     }
 
     & th, td {
-        // border: 1px solid blue;
 
         &:nth-child(1) {
             width: 25%;
@@ -78,9 +78,28 @@
         }
     }
 
+    & #btn__Cerrar {
+        background: none;
+        border: none;
+        align-self: flex-end;
+        margin: 1%;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(146, 82, 255);
+            border-radius: 9px;
+        }
+
+        & img {
+            width: 30px;
+        }
+    }
+
     & #btn__borrar {
         width: 55%;
+        min-width: 21px;
         height: 60%;
+        min-height: 19px;
         background-color: rgb(236, 69, 69);
         border-color: rgb(245, 53, 53);
         border-radius: 5px;
@@ -95,6 +114,14 @@
             border-color: rgb(250, 77, 77);
         }
     }
+
+    & #precioFinal {
+        margin-top: 3%;
+        margin-bottom: 0.5%;
+        background-color: rgb(33, 131, 33);
+        border-radius: 4px;
+        padding: 1%;
+    }
     
     & .btn__enviarCarrito {
         color: white;
@@ -105,7 +132,7 @@
         cursor: pointer;
         border-radius: 10px;
         border: 1px solid rgb(110, 47, 218);
-        margin-bottom: 1%;
+        margin: 2% 0;
 
         & img {
             width: 20px;
@@ -116,4 +143,42 @@
             background-color: rgb(174, 128, 255);
         }
     }
+
+    @media (max-width: 450px) {
+        & {
+            width: 80%;
+            min-width: 300px;
+        }
+
+        & table {
+            border-collapse: collapse;
+            width: 90%;
+            font-size: 12px;
+
+            & img {
+                width: 25px;
+            }
+        }
+
+        & #btn__Cerrar {
+            img {
+                width: 20px;
+            }
+        }
+
+        & #precioFinal {
+            font-size: 14px;
+            padding: 1%;
+        }
+
+        & .btn__enviarCarrito {
+            padding: 6px;
+            font-size: 12px;
+
+            & img {
+                width: 15px;
+                vertical-align: -4px
+            }
+        }
+    };
 }
