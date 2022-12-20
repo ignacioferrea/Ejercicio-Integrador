@@ -8,6 +8,13 @@ async function renderPlantillaListado(listado) {
         const html = template({listado})
     
         document.getElementsByClassName('cards-container')[0].innerHTML = html
+        prodCard = document.querySelectorAll('.card')
+
+        prodCard.forEach(card => {
+            card.addEventListener('click', e => {
+                e.preventDefault()
+            })
+        });
         
     } catch (error) {
         console.error(error)
