@@ -1400,6 +1400,10 @@
 .section-carrito .btn__enviarCarrito:hover {
   background-color: rgb(174, 128, 255);
 }
+.section-carrito #carritoVacio {
+  width: 15%;
+  margin-bottom: 2%;
+}
 @media (max-width: 450px) {
   .section-carrito {
     width: 80%;

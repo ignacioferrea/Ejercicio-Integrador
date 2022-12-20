@@ -144,6 +144,11 @@
         }
     }
 
+    & #carritoVacio {
+        width: 15%;
+        margin-bottom: 2%;
+    }
+
     @media (max-width: 450px) {
         & {
             width: 80%;
