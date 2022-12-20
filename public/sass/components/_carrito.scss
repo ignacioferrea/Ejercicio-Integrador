@@ -1,15 +1,119 @@
 .section-carrito {
     display: none;
     position: fixed;
-    background-color: #f1f2f3;
+    width: 50%;
+    min-width: 421px;
+    height: 50%;
     z-index: 1;
-    top: 150px;
-    left: 150px;
-    right: 150px;
-    bottom: 150px;
-    box-shadow: .3em .3em .10em .3em rgba(0,0,0,1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.36);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    color: white;
     
     &--visible {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+ 
+    & table {
+        border-collapse: collapse;
+        width: 98%;
+        margin-top: 1%;
+
+        & th {
+
+            &:nth-child(1) {
+                border-top-left-radius: 12px;
+            }
+
+            &:nth-child(6) {
+                border-top-right-radius: 12px;
+            }
+            
+        }
+    }
+
+    & th, td {
+        // border: 1px solid blue;
+
+        &:nth-child(1) {
+            width: 25%;
+        }
+
+        &:nth-child(2) {
+            width: 10%;
+            text-align: center;
+        }
+
+        &:nth-child(3) {
+            width: 10%;
+            text-align: center;
+        }
+        
+        &:nth-child(4) {
+            width: 20%;
+        }
+
+        &:nth-child(5) {
+            width: 10%;
+            text-align: center;
+        }
+        
+        &:nth-child(6) {
+            width: 10%;
+            text-align: center;
+        }
+
+        &:nth-child(7) {
+            width: 10%;
+            text-align: center;
+        }
+    }
+
+    & #btn__borrar {
+        width: 55%;
+        height: 60%;
+        background-color: rgb(236, 69, 69);
+        border-color: rgb(245, 53, 53);
+        border-radius: 5px;
+        cursor: pointer;
+
+        & img {
+            width: 70%;
+        }
+
+        &:hover {
+            background-color: rgb(245, 93, 93);
+            border-color: rgb(250, 77, 77);
+        }
+    }
+    
+    & .btn__enviarCarrito {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        background-color: rgb(146, 82, 255);
+        cursor: pointer;
+        border-radius: 10px;
+        border: 1px solid rgb(110, 47, 218);
+        margin-bottom: 1%;
+
+        & img {
+            width: 20px;
+            vertical-align: -6px;
+        }
+
+        &:hover {
+            background-color: rgb(174, 128, 255);
+        }
     }
 }
